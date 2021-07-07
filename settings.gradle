@@ -1,0 +1,3 @@
+rootProject.name = "TileLayout"
+include ':app'
+include ':tilelayout'
