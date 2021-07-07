@@ -26,3 +26,11 @@ dependencies {
 	implementation 'com.github.lyucl:TileLayout:v1.0.0'
 }
 ```
+
+Step 3
+```
+<com.lyucl.tilelayout.TileLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<com.lyucl.tilelayout.TileLayout/>
+```
