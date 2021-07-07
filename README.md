@@ -7,22 +7,3 @@
 控件超过容器时支持滚动。
 
 ## Usage
-
-Step 1. Add the JitPack repository to your build file
-
-```
-allprojects {
-	repositories {
-		...
-		maven { url 'https://jitpack.io' }
-	}
-}
-```
-
-Step 2. Add the dependency
-
-```
-dependencies {
-	implementation 'com.github.lyucl:TileLayout:v1.0.0'
-}
-```
