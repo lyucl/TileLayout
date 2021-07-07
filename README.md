@@ -12,10 +12,9 @@ Step 1. Add the JitPack repository to your build file
 
 ```
 allprojects {
-	repositories {
-		...
-		maven { url 'https://jitpack.io' }
-	}
+repositories {
+maven { url 'https://jitpack.io' }
+}
 }
 ```
 
@@ -23,7 +22,7 @@ Step 2. Add the dependency
 
 ```
 dependencies {
-	implementation 'com.github.lyucl:TileLayout:v1.0.0'
+implementation 'com.github.lyucl:TileLayout:v1.0.0'
 }
 ```
 
