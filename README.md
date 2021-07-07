@@ -30,6 +30,13 @@ Step 3
 ```
 <com.lyucl.tilelayout.TileLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:horizontalSpacing="10dp"
+    app:verticalSpacing="10dp">
 <com.lyucl.tilelayout.TileLayout/>
+
+
+horizontalSpacing - 水平间距
+verticalSpacing   - 垂直间距
+
 ```
