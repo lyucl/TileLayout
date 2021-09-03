@@ -20,13 +20,14 @@ import kotlin.math.max
  * @author: LCL
  * @date: 2021/6/11
  */
-class TileLayout(context: Context?, var attrs: AttributeSet? = null) : RadioGroup(context, attrs) {
+open class TileLayout(context: Context?, var attrs: AttributeSet? = null) :
+    RadioGroup(context, attrs) {
 
     private var mSelfWidth = 0// 自己实际的宽
     private var mSelfHeight = 0// 自己实际的高
     private var mInterceptTouchEvent = false// 是否拦截Touch事件
     private lateinit var mOverScroller: OverScroller// 滑动控制类
-    private lateinit var mVelocityTracker: VelocityTracker// 系统速度追踪器
+    private var mVelocityTracker: VelocityTracker? = null// 系统速度追踪器
     private var mMaxFlintVelocity = 0// 系统最大的滑动速度
 
     private var mDownX = 0f// down点X
@@ -168,7 +169,7 @@ class TileLayout(context: Context?, var attrs: AttributeSet? = null) : RadioGrou
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 mInterceptTouchEvent = false
-                mVelocityTracker.addMovement(event)
+                mVelocityTracker?.addMovement(event)
                 mDownX = x
                 mDownY = y
                 mLastX = x
@@ -187,16 +188,16 @@ class TileLayout(context: Context?, var attrs: AttributeSet? = null) : RadioGrou
                 }
                 val dx = x - mLastX
                 val dy = y - mLastY
-                mVelocityTracker.addMovement(event)
+                mVelocityTracker?.addMovement(event)
                 scrollBy(-dx.toInt(), -dy.toInt())
                 mLastX = x
                 mLastY = y
             }
             MotionEvent.ACTION_UP -> {
                 // 手指抬起，计算当前速率
-                mVelocityTracker.computeCurrentVelocity(500, mMaxFlintVelocity.toFloat())
-                val xVelocity = mVelocityTracker.xVelocity.toInt()
-                val yVelocity = mVelocityTracker.yVelocity.toInt()
+                mVelocityTracker?.computeCurrentVelocity(500, mMaxFlintVelocity.toFloat())
+                val xVelocity = mVelocityTracker?.xVelocity?.toInt() ?: 0
+                val yVelocity = mVelocityTracker?.yVelocity?.toInt() ?: 0
                 mOverScroller.fling(
                     scrollX,
                     scrollY,
@@ -208,7 +209,7 @@ class TileLayout(context: Context?, var attrs: AttributeSet? = null) : RadioGrou
                     mSelfHeight
                 )
                 invalidate()
-                mVelocityTracker.clear()
+                mVelocityTracker?.clear()
             }
         }
         return super.dispatchTouchEvent(event)
@@ -304,5 +305,6 @@ class TileLayout(context: Context?, var attrs: AttributeSet? = null) : RadioGrou
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         mVelocityTracker?.recycle()
+        mVelocityTracker = null
     }
 }

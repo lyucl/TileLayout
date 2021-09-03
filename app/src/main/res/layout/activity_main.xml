@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="600dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:horizontalSpacing="10dp"
+    app:verticalSpacing="10dp"
+    >
 
     <com.google.android.material.radiobutton.MaterialRadioButton
         android:layout_width="wrap_content"
