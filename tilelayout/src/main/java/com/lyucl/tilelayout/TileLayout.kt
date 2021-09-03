@@ -3,7 +3,6 @@ package com.lyucl.tilelayout
 import android.content.Context
 import android.graphics.Rect
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.VelocityTracker
 import android.view.ViewConfiguration
@@ -286,8 +285,6 @@ open class TileLayout(context: Context?, var attrs: AttributeSet? = null) :
     private fun getVisibleWidth(): Int {
         val rect = Rect()
         getLocalVisibleRect(rect)
-        Log.e("rect width", "" + rect.width())
-        Log.e("mSelfWidth", "" + mSelfWidth)
         return rect.width()
     }
 
@@ -297,8 +294,6 @@ open class TileLayout(context: Context?, var attrs: AttributeSet? = null) :
     private fun getVisibleHeight(): Int {
         val rect = Rect()
         getLocalVisibleRect(rect)
-        Log.e("rect height", "" + rect.height())
-        Log.e("mSelfHeight", "" + mSelfHeight)
         return rect.height()
     }
 
